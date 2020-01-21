@@ -1,0 +1,15 @@
+.event-item-wrapper {
+  width: 100%;
+  margin: 5px 0 5px 0;
+}
+
+.details-view {
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+  padding: 10px;
+}
+
+.map-button {
+  text-align: right;
+}

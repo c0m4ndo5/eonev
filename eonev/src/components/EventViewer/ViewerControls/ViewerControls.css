@@ -1,0 +1,8 @@
+.toolbar-message {
+  float: left;
+  line-height: 2.5;
+}
+
+.spaced-toolbar div {
+  margin: 5px;
+}
