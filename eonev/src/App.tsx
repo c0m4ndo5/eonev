@@ -9,16 +9,29 @@ import {
 } from "react-router-dom";
 import Content from "./components/Content";
 import { Navbar, Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 const App: React.FC = () => {
-  //PENDING header
+  //The root app simply builds a header with links to the home page and about page
   return (
     <div className="App">
       <Router>
         <Navbar bg="info" variant="dark">
-          <Navbar.Brand>ICON PENDING EONEV</Navbar.Brand>
+          <Link to="/eventviewer">
+            <Navbar.Brand>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon> EONEV
+            </Navbar.Brand>
+          </Link>
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>About Icon</Navbar.Text>
+            <Link to="/about">
+              <Navbar.Text>
+                <FontAwesomeIcon
+                  icon={faQuestionCircle}
+                  size="lg"
+                ></FontAwesomeIcon>
+              </Navbar.Text>
+            </Link>
           </Navbar.Collapse>
         </Navbar>
         <Container className="content">

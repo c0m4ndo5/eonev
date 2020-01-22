@@ -7,25 +7,24 @@ interface EventListProps {
   events: Array<Event>;
 }
 
+//Lists the events and tracks currently selected one
 const EventList: React.FC<EventListProps> = props => {
   const [activeItem, setActiveItem] = useState("");
   return (
     <Container>
-      {props.events.length !== 0 ? (
-        props.events.map(e => (
-          <Row>
-            <Tab.Container activeKey={activeItem}>
-              <EventListItem
-                active={activeItem === e.id}
-                event={e}
-                onClickItem={setActiveItem}
-              ></EventListItem>
-            </Tab.Container>
-          </Row>
-        ))
-      ) : (
-        <span>Hold on a second..</span>
-      )}
+      {props.events.map(e => (
+        <Row key={e.id}>
+          <Tab.Container activeKey={activeItem}>
+            <EventListItem
+              active={activeItem === e.id}
+              event={e}
+              onClickItem={id =>
+                activeItem === id ? setActiveItem("") : setActiveItem(id)
+              }
+            ></EventListItem>
+          </Tab.Container>
+        </Row>
+      ))}
     </Container>
   );
 };

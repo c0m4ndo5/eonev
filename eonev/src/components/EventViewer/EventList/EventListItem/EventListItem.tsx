@@ -1,8 +1,10 @@
 import React from "react";
-import { Tab, ListGroup, Col, Row } from "react-bootstrap";
+import { Tab, ListGroup, Col, Row, Badge } from "react-bootstrap";
 import Event from "../../../../models/Event";
 import "./EventListItem.css";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 interface EventListItemProps {
   event: Event;
@@ -10,6 +12,7 @@ interface EventListItemProps {
   onClickItem(id: string): void;
 }
 
+//Displays event details and interactive links, as well as styled badge based on status
 const EventListItem: React.FC<EventListItemProps> = props => {
   return (
     <div className="event-item-wrapper">
@@ -19,7 +22,18 @@ const EventListItem: React.FC<EventListItemProps> = props => {
           action
           onClick={() => props.onClickItem(props.event.id as string)}
         >
+          <Badge
+            variant={props.event.closed === null ? "info" : "secondary"}
+            pill
+            className="pill-spacer"
+          >
+            {props.event.closed === null ? "open" : "closed"}
+          </Badge>
           {props.event.title}
+          <FontAwesomeIcon
+            icon={props.active ? faChevronUp : faChevronDown}
+            className="float-icon-right"
+          ></FontAwesomeIcon>
         </ListGroup.Item>
       </ListGroup>
       <Tab.Content>
@@ -54,11 +68,14 @@ const EventListItem: React.FC<EventListItemProps> = props => {
             <Col sm={4} className="map-button">
               <a
                 href={
-                  "https://worldview.earthdata.nasa.gov/?e=" + props.event.id
+                  "https://www.google.com/maps/search/?api=1&query=" +
+                  props.event.lastGeometryY +
+                  "," +
+                  props.event.lastGeometryX
                 }
                 target="_newtab"
               >
-                <Button variant="success">View on map!</Button>
+                <Button variant="success">View on Google Maps!</Button>
               </a>
             </Col>
           </Row>

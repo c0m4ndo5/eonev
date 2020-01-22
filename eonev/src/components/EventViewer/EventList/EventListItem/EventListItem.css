@@ -13,3 +13,11 @@
 .map-button {
   text-align: right;
 }
+
+.pill-spacer {
+  margin-right: 5px;
+}
+
+.float-icon-right {
+  float: right;
+}

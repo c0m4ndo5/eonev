@@ -2,9 +2,11 @@ import Category from "../models/Category";
 import EONEVAPIOptions from "./eonevapioptions";
 import Event from "../models/Event";
 
+//Implements the call to get all available categories and events
 export default class EONEVAPI {
   private static baseUrl = "http://localhost:5000/";
 
+  //Call/await fetch and retrieve available categories
   static async getCategories(): Promise<Array<Category>> {
     var result = await fetch(this.baseUrl + "category", {
       method: "GET"
@@ -12,7 +14,7 @@ export default class EONEVAPI {
     var jsonString = await result.json();
     return jsonString as Array<Category>;
   }
-
+  //Call/await events endpoint with the appropriate URL parameters for filtering and ordering
   static async getEvents(options: EONEVAPIOptions): Promise<Array<Event>> {
     var finalUrl = this.baseUrl + "events?";
     if (options.from !== undefined)

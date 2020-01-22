@@ -1,8 +1,16 @@
 .toolbar-message {
-  float: left;
+  float: right;
   line-height: 2.5;
 }
 
 .spaced-toolbar div {
   margin: 5px;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+.spaced-toolbar .react-datepicker-popper {
+  z-index: 999;
 }
